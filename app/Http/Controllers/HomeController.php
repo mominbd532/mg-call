@@ -55,4 +55,16 @@ class HomeController extends Controller
         return back()->with('success', 'User created successfully.');
     }
 
+    public function activeUser($id)
+    {
+        User::where('id',$id)->update(['status'=>1]);
+        return back()->with('success', 'User activated successfully.');
+    }
+
+    public function deactiveUser($id)
+    {
+        User::where('id',$id)->update(['status'=>0]);
+        return back()->with('success', 'User deactivated successfully.');
+    }
+
 }

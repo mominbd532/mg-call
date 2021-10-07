@@ -15,6 +15,14 @@
                                 {{ session('status') }}
                             </div>
                         @endif
+                            @if(Session::has('success'))
+                                <div class="alert alert-success">
+                                    {{ Session::get('success') }}
+                                    @php
+                                        Session::forget('success');
+                                    @endphp
+                                </div>
+                            @endif
 
                             <table class="table">
                                 <thead>
@@ -43,9 +51,9 @@
                                     </td>
                                     <td>
                                         @if($user->status == 1)
-                                            <a href="#" class="btn btn-sm btn-danger">Dective Use</a>
+                                            <a href="{{url('admin/deactive-user/'.$user->id)}}" class="btn btn-sm btn-danger">Dective User</a>
                                         @else
-                                            <a href="#" class="btn btn-sm btn-success">Active User</a>
+                                            <a href="{{url('admin/active-user/'.$user->id)}}" class="btn btn-sm btn-success">Active User</a>
                                         @endif
 
                                     </td>

@@ -17,6 +17,8 @@ use App\Http\Controllers\HomeController;
 Route::get('admin/home', [HomeController::class, 'adminHome'])->name('admin.home')->middleware('is_admin');
 Route::get('admin/add-user', [HomeController::class, 'addUser'])->name('add.user')->middleware('is_admin');
 Route::post('admin/save-user', [HomeController::class, 'saveUser'])->name('save.user')->middleware('is_admin');
+Route::get('admin/active-user/{id}', [HomeController::class, 'activeUser'])->name('active.user')->middleware('is_admin');
+Route::get('admin/deactive-user/{id}', [HomeController::class, 'deactiveUser'])->name('deactive.user')->middleware('is_admin');
 
 Route::get('/', function () {
     return view('welcome');
